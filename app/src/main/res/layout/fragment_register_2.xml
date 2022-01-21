@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/frg_reg2_ilHeight"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="75dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="75dp"
+        android:background="@drawable/btn_invisible"
+        android:layerType="none"
+        android:textColorHint="@color/colorAccent"
+        app:boxBackgroundColor="@color/colorButtonPrimary"
+        app:boxBackgroundMode="outline"
+        app:boxCornerRadiusBottomEnd="10dp"
+        app:boxCornerRadiusBottomStart="10dp"
+        app:boxCornerRadiusTopEnd="10dp"
+        app:boxCornerRadiusTopStart="10dp"
+        app:boxStrokeColor="@color/colorAccent"
+        app:boxStrokeWidth="2dp"
+        app:errorEnabled="true"
+        app:helperText="Required*"
+        app:helperTextEnabled="true"
+        app:helperTextTextAppearance="@style/TextAppearance.App.Caption"
+        app:helperTextTextColor="@color/colorHint"
+        app:hintEnabled="true"
+        app:hintTextColor="@color/colorAccent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frg_reg2_ilWeight">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/frg_reg2_etHeight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Height Cm"
+            android:inputType="number" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/frg_reg2_ilWeight"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="75dp"
+        android:layout_marginTop="75dp"
+        android:layout_marginEnd="75dp"
+        android:background="@drawable/btn_invisible"
+        android:layerType="none"
+        android:textColorHint="@color/colorAccent"
+        app:boxBackgroundColor="@color/colorButtonPrimary"
+        app:boxBackgroundMode="outline"
+        app:boxCornerRadiusBottomEnd="10dp"
+        app:boxCornerRadiusBottomStart="10dp"
+        app:boxCornerRadiusTopEnd="10dp"
+        app:boxCornerRadiusTopStart="10dp"
+        app:boxStrokeColor="@color/colorAccent"
+        app:boxStrokeWidth="2dp"
+        app:errorEnabled="true"
+        app:helperText="Required*"
+        app:helperTextEnabled="true"
+        app:helperTextTextAppearance="@style/TextAppearance.App.Caption"
+        app:helperTextTextColor="@color/colorHint"
+        app:hintEnabled="true"
+        app:hintTextColor="@color/colorAccent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/frg_reg2_etWeight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Weight Kg"
+            android:inputType="number" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Spinner
+        android:id="@+id/frg_reg2_spSex"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="75dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="75dp"
+        android:entries="@array/genders"
+        android:popupBackground="@drawable/entity_food_shape"
+        android:spinnerMode="dialog"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frg_reg2_ilAge" />
+
+    <TextView
+        android:id="@+id/frg_reg2_tvSex"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Required*"
+        android:textAppearance="@style/TextAppearance.App.Caption"
+        android:textColor="@color/colorHint"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frg_reg2_spSex"
+        tools:textAlignment="viewStart" />
+
+    <Spinner
+        android:id="@+id/frg_reg2_spActLevel"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="75dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="75dp"
+        android:entries="@array/ActivityLevel"
+        android:popupBackground="@drawable/entity_food_shape"
+        android:spinnerMode="dialog"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frg_reg2_tvSex" />
+
+    <TextView
+        android:id="@+id/frg_reg2_tvActLevel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Required*"
+        android:textAppearance="@style/TextAppearance.App.Caption"
+        android:textColor="@color/colorHint"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frg_reg2_spActLevel" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/frg_reg2_btnContinue"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="75dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="75dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/button_state"
+        android:text="Continue"
+        android:textColor="@color/colorAccent"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frg_reg2_tvActLevel" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/frg_reg2_ilAge"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="75dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="75dp"
+        android:background="@drawable/btn_invisible"
+        android:layerType="none"
+        android:textColorHint="@color/colorAccent"
+        app:boxBackgroundColor="@color/colorButtonPrimary"
+        app:boxBackgroundMode="outline"
+        app:boxCornerRadiusBottomEnd="10dp"
+        app:boxCornerRadiusBottomStart="10dp"
+        app:boxCornerRadiusTopEnd="10dp"
+        app:boxCornerRadiusTopStart="10dp"
+        app:boxStrokeColor="@color/colorAccent"
+        app:boxStrokeWidth="2dp"
+        app:errorEnabled="true"
+        app:helperText="Required*"
+        app:helperTextEnabled="true"
+        app:helperTextTextAppearance="@style/TextAppearance.App.Caption"
+        app:helperTextTextColor="@color/colorHint"
+        app:hintEnabled="true"
+        app:hintTextColor="@color/colorAccent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frg_reg2_ilHeight">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/frg_reg2_etAge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Age Years" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

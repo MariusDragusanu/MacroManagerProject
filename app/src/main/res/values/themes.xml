@@ -1,0 +1,41 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.MacroManager" parent="Theme.MaterialComponents.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary2</item>
+        <item name="colorPrimaryDark">@color/colorButtonPrimary</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <!--this changes the filled colour of the MDC Filled EditText-->
+        <!--this also changes the color of the hint font and helper text too-->
+        <item name="colorOnSurface">@color/colorAccent</item>
+
+        <!--this customizes the hint font of the EditText-->
+        <item name="textAppearanceSubtitle1">@style/TextAppearance.App.Subtitle1</item>
+
+        <!--this changes the helper text font-->
+        <item name="textAppearanceCaption">@style/TextAppearance.App.Caption</item>
+
+        <!--this is to change the shape of the MDC EditText-->
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.App.SmallComponent</item>
+
+    </style>
+    <style name="TextAppearance.App.Subtitle1" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <!--this changes the font face of the hint text-->
+        <item name="fontFamily">sans-serif-condensed</item>
+        <item name="android:fontFamily">sans-serif-condensed</item>
+    </style>
+
+    <style name="TextAppearance.App.Caption" parent="TextAppearance.MaterialComponents.Caption">
+        <!--this changes the font face of the helper text-->
+        <item name="fontFamily">sans-serif-black</item>
+        <item name="android:fontFamily">sans-serif-black</item>
+    </style>
+
+    <style name="ShapeAppearance.App.SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <!--this makes the 10 dp of cut corners of the MDC EditText-->
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">10dp</item>
+    </style>
+
+</resources>

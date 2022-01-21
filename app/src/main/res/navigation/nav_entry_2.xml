@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_entry_2"
+    app:startDestination="@id/__FragmentSplashScreen2">
+
+    <fragment
+        android:id="@+id/__FragmentSplashScreen2"
+        android:name="com.example.macromanager.Fragments.__FragmentSplashScreen"
+        android:label="__FragmentSplashScreen" >
+        <action
+            android:id="@+id/action___FragmentSplashScreen2_to___FragmentOnBoard2"
+            app:destination="@id/__FragmentOnBoard2"
+            app:popUpTo="@id/__FragmentSplashScreen2"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action___FragmentSplashScreen2_to_mainActivity2"
+            app:destination="@id/mainActivity2"
+            app:popUpTo="@id/__FragmentSplashScreen2"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/__FragmentOnBoard2"
+        android:name="com.example.macromanager.Fragments.__FragmentOnBoard"
+        android:label="fragment_on_board"
+        tools:layout="@layout/fragment_on_board" >
+        <action
+            android:id="@+id/action___FragmentOnBoard2_to_mainActivity2"
+            app:destination="@id/mainActivity2"
+            app:popUpTo="@id/__FragmentSplashScreen2"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <activity
+        android:id="@+id/mainActivity2"
+        android:name="com.example.macromanager.Activity.MainActivity"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main" />
+</navigation>
