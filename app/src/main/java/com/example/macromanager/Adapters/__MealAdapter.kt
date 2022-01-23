@@ -9,11 +9,16 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 
 import com.example.macromanager.Entity.__Meal
+import com.example.macromanager.Listeners.__AdapterMealListener
 import com.example.macromanager.R
 import com.example.myapplication.Object.__Utility
 
 
 class __MealAdapter(val mealList:MutableList<__Meal>, layoutId:Int):__GenericAdapter<__Meal>(mealList,layoutId) {
+    private lateinit var listener:__AdapterMealListener
+    fun setListener(newListener: __AdapterMealListener){
+        this.listener=newListener
+    }
     override fun onLongClickListener(view: View, any: __Meal, position: Int): Boolean {
         return true
     }
@@ -26,6 +31,10 @@ class __MealAdapter(val mealList:MutableList<__Meal>, layoutId:Int):__GenericAda
         val tvTitle = view.findViewById<TextView>(R.id.entity_meal_tvTitle)
         tvTitle.text=t.getTitle()
         val btnMore = view.findViewById<ImageButton>(R.id.entity_meal_btnMore)
+        val btnAdd=view.findViewById<ImageButton>(R.id.entity_meal_btnAddFood)
+        btnAdd.setOnClickListener {
+            listener.onMealClicked(t)
+        }
         btnMore.setOnClickListener {
 onExpandView(view,t,position)
         }

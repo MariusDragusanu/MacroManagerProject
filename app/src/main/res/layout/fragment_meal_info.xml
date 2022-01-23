@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frg_meal_designer_swShow"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".Fragments.__FragmentMealInfo">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/frg_meal_designer_ilMealName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="10dp"
+                    android:hint="Meal Name"
+                    android:textColorHint="@color/colorAccent"
+                    app:boxBackgroundColor="@color/colorPrimary2"
+                    app:boxBackgroundMode="outline"
+                    app:boxCornerRadiusBottomEnd="10dp"
+                    app:boxCornerRadiusBottomStart="10dp"
+                    app:boxCornerRadiusTopEnd="10dp"
+                    app:boxCornerRadiusTopStart="10dp"
+                    app:boxStrokeColor="@color/colorAccent"
+                    app:expandedHintEnabled="true"
+                    app:helperText="Required*"
+                    app:helperTextEnabled="true"
+                    app:helperTextTextColor="@color/colorHint"
+                    app:hintAnimationEnabled="true"
+                    app:hintEnabled="true"
+                    app:hintTextColor="@color/colorAccent"
+                    app:layout_constraintEnd_toStartOf="@+id/frg_meal_designer_ilMealCategory"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider9">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/frg_meal_designer_etMealName"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/frg_meal_designer_ilMealCategory"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="10dp"
+                    android:hint="Meal Category"
+                    android:textColorHint="@color/colorAccent"
+                    app:boxBackgroundColor="@color/colorPrimary2"
+                    app:boxBackgroundMode="outline"
+                    app:boxCornerRadiusBottomEnd="10dp"
+                    app:boxCornerRadiusBottomStart="10dp"
+                    app:boxCornerRadiusTopEnd="10dp"
+                    app:boxCornerRadiusTopStart="10dp"
+                    app:boxStrokeColor="@color/colorAccent"
+                    app:endIconTint="@color/colorAccent"
+                    app:expandedHintEnabled="true"
+                    app:helperText="Required*"
+                    app:helperTextEnabled="true"
+                    app:helperTextTextColor="@color/colorHint"
+                    app:hintAnimationEnabled="true"
+                    app:hintEnabled="true"
+                    app:hintTextColor="@color/colorAccent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/frg_meal_designer_ilMealName"
+                    app:layout_constraintTop_toBottomOf="@+id/divider9">
+
+                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                        android:id="@+id/frg_meal_designer_actvMealCategory"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/textView23"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:text="Meal Info"
+                    android:textAppearance="@style/TextAppearance.App.Subtitle1"
+                    android:textColor="@color/colorText"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:id="@+id/divider9"
+                    android:layout_width="0dp"
+                    android:layout_height="3dp"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="1dp"
+                    android:background="@color/colorPrimary2"
+
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView23" />
+
+                <TextView
+                    android:id="@+id/textView24"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="40dp"
+                    android:text="Meal Composition"
+                    android:textAppearance="@style/TextAppearance.App.Subtitle1"
+                    android:textColor="@color/colorText"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/frg_meal_designer_ilMealName" />
+
+                <View
+                    android:id="@+id/divider10"
+                    android:layout_width="0dp"
+                    android:layout_height="3dp"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="1dp"
+                    android:background="@color/colorButtonPrimary"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView24" />
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/frg_meal_designer_btnAddFood"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/btn_invisible"
+                    android:src="@android:drawable/ic_input_add"
+                    android:tint="@color/colorAccent"
+                    app:layout_constraintBottom_toTopOf="@+id/divider10"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/frg_meal_designer_rvFood"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider10" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    android:id="@+id/textView25"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:text="Meal Macros"
+                    android:textAppearance="@style/TextAppearance.App.Subtitle1"
+                    android:textColor="@color/colorText"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:id="@+id/divider11"
+                    android:layout_width="0dp"
+                    android:layout_height="3dp"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_marginEnd="1dp"
+                    android:background="@color/colorPrimary2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView25" />
+
+                <Switch
+                    android:id="@+id/frg_meal_designer_swShow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="5dp"
+                    android:text="Show"
+                    android:textColor="@color/colorAccent"
+                    app:layout_constraintBottom_toTopOf="@+id/divider11"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/frg_meal_designer_cl"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider11">
+
+                    <ProgressBar
+                        android:id="@+id/frg_meal_designer_pbProtein"
+                        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"
+                        android:layout_marginTop="20dp"
+                        android:progress="20"
+                        android:progressDrawable="@drawable/progressbar"
+                        app:layout_constraintEnd_toStartOf="@+id/frg_meal_designer_pbFat"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ProgressBar
+                        android:id="@+id/frg_meal_designer_pbFat"
+                        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"
+                        android:layout_marginTop="20dp"
+                        android:progress="5"
+                        android:progressDrawable="@drawable/progressbar"
+                        app:layout_constraintEnd_toStartOf="@+id/frg_meal_designer_pbCarbs"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/frg_meal_designer_pbProtein"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ProgressBar
+                        android:id="@+id/frg_meal_designer_pbCarbs"
+                        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"
+                        android:layout_marginTop="20dp"
+                        android:progress="75"
+                        android:progressDrawable="@drawable/progressbar"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/frg_meal_designer_pbFat"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/frg_meal_designer_tvProtein"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:text="25.7g of proteins"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.App.Subtitle1"
+                        android:textColor="@color/colorText"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toStartOf="@+id/frg_meal_designer_tvFat"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/frg_meal_designer_pbProtein" />
+
+                    <TextView
+                        android:id="@+id/frg_meal_designer_tvFat"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:text="10.3g of  fats"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.App.Subtitle1"
+                        android:textColor="@color/colorText"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toStartOf="@+id/frg_meal_designer_tvCarb"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/frg_meal_designer_tvProtein"
+                        app:layout_constraintTop_toBottomOf="@+id/frg_meal_designer_pbFat" />
+
+                    <TextView
+                        android:id="@+id/frg_meal_designer_tvCarb"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:text="75.6g of carbs"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.App.Subtitle1"
+                        android:textColor="@color/colorText"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/frg_meal_designer_tvFat"
+                        app:layout_constraintTop_toBottomOf="@+id/frg_meal_designer_pbCarbs" />
+
+                    <TextView
+                        android:id="@+id/frg_meal_designer_tvTotalCalories"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="20dp"
+                        android:text="Total Calories:445 kcal"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.App.Subtitle1"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/frg_meal_designer_tvFat" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/frg_meal_designer_btnSave"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="70dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="70dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/button_state"
+                android:text="Save Meal"
+                android:textAllCaps="false"
+                android:textAppearance="@style/TextAppearance.App.Subtitle1"
+                android:textColor="@color/colorAccent"
+                android:textSize="20sp" />
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

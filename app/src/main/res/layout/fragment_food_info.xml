@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".Fragments.__FragmentFoodInfo">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/frg_food_info_tvCarbs"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginEnd="10dp"
+                    android:text="TextView"
+                    android:textAppearance="@style/TextAppearance.App.Subtitle1"
+                    android:textColor="@color/colorText"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/frg_food_info_pieChartMacros"
+                    app:layout_constraintTop_toBottomOf="@+id/frg_food_info_tvFat" />
+
+                <TextView
+                    android:id="@+id/frg_food_info_tvFat"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginEnd="10dp"
+                    android:text="TextView"
+                    android:textAppearance="@style/TextAppearance.App.Subtitle1"
+                    android:textColor="@color/colorText"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/frg_food_info_pieChartMacros"
+                    app:layout_constraintTop_toBottomOf="@+id/frg_food_info_tvProtein" />
+
+                <ImageView
+                    android:id="@+id/frg_food_info_ivIcon"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:src="@drawable/icon_food_dairy"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/frg_food_info_tvName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:text="TextView"
+                    android:textAppearance="@style/TextAppearance.App.Subtitle1"
+                    android:textColor="@color/colorText"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/frg_food_info_ivIcon"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/frg_food_info_tvBrand"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="20dp"
+                    android:text="TextView"
+                    android:textAppearance="@style/TextAppearance.App.Subtitle1"
+                    android:textColor="@color/colorText"
+                    android:textSize="10sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/frg_food_info_ivIcon"
+                    app:layout_constraintTop_toBottomOf="@+id/frg_food_info_tvName" />
+
+                <TextView
+                    android:id="@+id/textView28"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="36dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="Macros"
+                    android:textColor="@color/colorText"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toTopOf="@+id/frg_food_info_tvCalories"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/frg_food_info_tvBrand" />
+
+                <TextView
+                    android:id="@+id/frg_food_info_tvCalories"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="71dp"
+                    android:layout_marginEnd="20dp"
+                    android:text="350 Kcal/100g"
+                    android:textAlignment="center"
+                    android:textColor="#2E7D32"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/frg_food_info_tvBrand" />
+
+                <View
+                    android:id="@+id/divider13"
+                    android:layout_width="409dp"
+                    android:layout_height="3dp"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="1dp"
+                    android:background="@color/colorButtonPrimary"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/frg_food_info_tvCalories" />
+
+                <com.example.macromanager.CustomViews.__PieChart
+                    android:id="@+id/frg_food_info_pieChartMacros"
+                    android:layout_width="250dp"
+                    android:layout_height="200dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider13">
+
+                </com.example.macromanager.CustomViews.__PieChart>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/frg_food_info_ilServing"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:hint="Serving"
+                    android:textColorHint="@color/colorAccent"
+                    app:boxBackgroundColor="@color/colorPrimary2"
+                    app:boxBackgroundMode="outline"
+                    app:boxCornerRadiusBottomEnd="10dp"
+                    app:boxCornerRadiusBottomStart="10dp"
+                    app:boxCornerRadiusTopEnd="10dp"
+                    app:boxCornerRadiusTopStart="10dp"
+                    app:boxStrokeColor="@color/colorAccent"
+                    app:endIconTint="@color/colorAccent"
+                    app:expandedHintEnabled="true"
+                    app:helperText="Required*"
+                    app:helperTextEnabled="true"
+                    app:helperTextTextColor="@color/colorHint"
+                    app:hintAnimationEnabled="true"
+                    app:hintEnabled="true"
+                    app:hintTextColor="@color/colorAccent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/frg_food_info_ilQuantity"
+                    app:layout_constraintTop_toBottomOf="@+id/chipGroup">
+
+                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                        android:id="@+id/frg_food_info_actvServing"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/frg_food_info_ilQuantity"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="10dp"
+                    android:hint="Quantity"
+                    android:textColorHint="@color/colorAccent"
+                    app:boxBackgroundColor="@color/colorPrimary2"
+                    app:boxBackgroundMode="outline"
+                    app:boxCornerRadiusBottomEnd="10dp"
+                    app:boxCornerRadiusBottomStart="10dp"
+                    app:boxCornerRadiusTopEnd="10dp"
+                    app:boxCornerRadiusTopStart="10dp"
+                    app:boxStrokeColor="@color/colorAccent"
+                    app:endIconTint="@color/colorAccent"
+                    app:expandedHintEnabled="true"
+                    app:helperText="Required*"
+                    app:helperTextEnabled="true"
+                    app:helperTextTextColor="@color/colorHint"
+                    app:hintAnimationEnabled="true"
+                    app:hintEnabled="true"
+                    app:hintTextColor="@color/colorAccent"
+                    app:layout_constraintEnd_toStartOf="@+id/frg_food_info_ilServing"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/chipGroup">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/frg_food_info_etQuantity"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/frg_food_info_ilMeal"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:hint="Meal"
+                    android:textColorHint="@color/colorAccent"
+                    app:boxBackgroundColor="@color/colorPrimary2"
+                    app:boxBackgroundMode="outline"
+                    app:boxCornerRadiusBottomEnd="10dp"
+                    app:boxCornerRadiusBottomStart="10dp"
+                    app:boxCornerRadiusTopEnd="10dp"
+                    app:boxCornerRadiusTopStart="10dp"
+                    app:boxStrokeColor="@color/colorAccent"
+                    app:endIconTint="@color/colorAccent"
+                    app:expandedHintEnabled="true"
+                    app:helperText="Required*"
+                    app:helperTextEnabled="true"
+                    app:helperTextTextColor="@color/colorHint"
+                    app:hintAnimationEnabled="true"
+                    app:hintEnabled="true"
+                    app:hintTextColor="@color/colorAccent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/frg_food_info_ilServing">
+
+                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                        android:id="@+id/frg_food_info_actvMeal"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/frg_food_info_btnAdd"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/button_state"
+                    android:text="Add Food"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorAccent"
+                    android:visibility="invisible"
+                    app:layout_constraintEnd_toStartOf="@+id/frg_food_info_ilMeal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/frg_food_info_ilQuantity" />
+
+                <TextView
+                    android:id="@+id/frg_food_info_tvProtein"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginEnd="10dp"
+                    android:text="TextView"
+                    android:textAppearance="@style/TextAppearance.App.Subtitle1"
+                    android:textColor="@color/colorText"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/frg_food_info_pieChartMacros"
+                    app:layout_constraintTop_toBottomOf="@+id/divider13" />
+
+                <com.google.android.material.chip.ChipGroup
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:id="@+id/chipGroup"
+                    android:layout_width="0dp"
+                    android:layout_height="150dp"
+                    android:layout_marginTop="20dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/frg_food_info_pieChartMacros">
+
+                </com.google.android.material.chip.ChipGroup>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

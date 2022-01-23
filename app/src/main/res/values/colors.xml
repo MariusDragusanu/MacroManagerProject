@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary2">#323639</color>
-    <color name="colorBackgroundStart">#202124</color>
-    <color name="colorBackgroundEnd">#282C2F</color>
+    <color name="colorPrimary2">#212325</color>
+    <color name="colorBackgroundStart">#18191B</color>
+    <color name="colorBackgroundEnd">#131516</color>
     <color name="colorButtonPrimary">@color/colorPrimary2</color>
     <color name="colorHint">#802E8FA7</color>
     <color name="colorText">#ffffff</color>
     <color name="colorAccent">#2e8fa7</color>
     <color name="black">#000000</color>
     <color name="red">#C62828</color>
+    <color name="progress1">#00838F</color>
+    <color name="progress2">#0B4321</color>
+    <color name="progress3">#00695C</color>
 
 </resources>

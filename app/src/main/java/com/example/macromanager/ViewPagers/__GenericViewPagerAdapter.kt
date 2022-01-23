@@ -16,8 +16,13 @@ class __GenericViewPagerAdapter(private val fragmentList:MutableList<Fragment>,
     override fun createFragment(position: Int): Fragment {
         return fragmentList[position]
     }
-    fun addFragment(newFragment: Fragment){
+    fun setSecondaryFragment(newFragment: Fragment){
         fragmentList.add(newFragment)
         notifyItemInserted(fragmentList.size-1)
+    }
+    fun removeFragment(oldFragment: Fragment){
+        val index=fragmentList.indexOf(oldFragment)
+        fragmentList.removeAt(index)
+        notifyItemRemoved(index)
     }
 }

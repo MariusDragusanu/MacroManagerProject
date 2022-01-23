@@ -5,10 +5,13 @@ import android.text.TextUtils
 import com.example.macromanager.Entity.__Food
 import com.example.macromanager.Entity.__Meal
 import com.example.myapplication.Entity.__Date
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 import java.time.Duration
 import java.util.*
 
 object __Utility {
+    const val PI=3.14159265359f
     fun clampValue(min:Int, value:Int, max:Int):Int {
         var toBeReturned=0
        if(value>min) toBeReturned=value
@@ -87,6 +90,9 @@ return (y1+((x-x1)*(y2-y1)/(x2-x1)))
             result+=(food.Quantity*food.caloriesIn100UM/100f).toFloat()
         }
         return result
+    }
+    fun checkInput(layout:TextInputLayout,editText:TextInputEditText){
+
     }
 }
 

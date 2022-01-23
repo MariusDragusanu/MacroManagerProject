@@ -6,28 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".Activity.MainActivity">
 
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/main_ViewPager"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-
+    <FrameLayout
+        android:id="@+id/main_frLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </androidx.viewpager2.widget.ViewPager2>
-
-    <ProgressBar
-        android:id="@+id/main_pnBar"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

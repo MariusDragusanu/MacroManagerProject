@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_main_loop"
+    app:startDestination="@id/__FragmentMain">
+
+    <fragment
+        android:id="@+id/__FragmentMain"
+        android:name="com.example.macromanager.Fragments.__FragmentMain"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action___FragmentMain_to___FragmentMealDesigner"
+            app:destination="@id/__FragmentMealDesigner" />
+        <action
+            android:id="@+id/action___FragmentMain_to___FragmentFoodDesigner"
+            app:destination="@id/__FragmentFoodDesigner" />
+        <action
+            android:id="@+id/action___FragmentMain_to___FragmentFoodInfo"
+            app:destination="@id/__FragmentFoodInfo" />
+    </fragment>
+    <fragment
+        android:id="@+id/__FragmentFoodDesigner"
+        android:name="com.example.macromanager.Fragments.__FragmentFoodDesigner"
+        android:label="fragment_food_designer"
+        tools:layout="@layout/fragment_food_designer" />
+    <fragment
+        android:id="@+id/__FragmentMealDesigner"
+        android:name="com.example.macromanager.Fragments.__FragmentMealInfo"
+        android:label="fragment____meal_designer"
+        tools:layout="@layout/fragment_meal_info" >
+        <action
+            android:id="@+id/action___FragmentMealDesigner_to___FragmentFoodLibrary"
+            app:destination="@id/__FragmentFoodLibrary" />
+    </fragment>
+    <fragment
+        android:id="@+id/__FragmentFoodLibrary"
+        android:name="com.example.macromanager.Fragments.__FragmentFoodLibrary"
+        android:label="__FragmentFoodLibrary" />
+    <fragment
+        android:id="@+id/__FragmentFoodInfo"
+        android:name="com.example.macromanager.Fragments.__FragmentFoodInfo"
+        android:label="fragment_food_info"
+        tools:layout="@layout/fragment_food_info" />
+</navigation>

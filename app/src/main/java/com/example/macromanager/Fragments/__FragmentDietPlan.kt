@@ -11,8 +11,7 @@ import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.*
 import androidx.constraintlayout.widget.ConstraintLayout
-import com.example.macromanager.Entity.__User2
-import com.example.macromanager.Listeners.__FragmentDietPlanListener
+import com.example.macromanager.Listeners.FragmentListener.__FragmentDietPlanListener
 import com.example.macromanager.R
 import com.example.myapplication.Entity.__Date
 import com.example.myapplication.Entity.__UserBiometrics
@@ -21,7 +20,7 @@ import com.example.myapplication.Object.__Utility
 
 
 class __FragmentDietPlan(private val currentUser:__UserBiometrics) : Fragment() {
-    private lateinit var listener:__FragmentDietPlanListener
+    private lateinit var listener: __FragmentDietPlanListener
 private lateinit var pbProtein:SeekBar
 private lateinit var pbFat:SeekBar
 private lateinit var pbCarb:SeekBar
@@ -262,10 +261,10 @@ private var carbProgress=50f
         }
         val btnSave=view.findViewById<Button>(R.id.frg_dietplan_btnSave).setOnClickListener {
               val dietPlan=__UserDietPlan(proteinProgress/100f,fatProgress/100f,carbProgress/100f)
-            dietPlan.setBaseCalories(newDailyIntake)
-            dietPlan.setWeeklyProgress(resultProgress)
+            dietPlan.baseCalories=newDailyIntake
+            dietPlan.weeklyProgress=resultProgress
             dietPlan.setNewGoalTimeframe(dateStart,dateEnd)
-            listener.getDietPlan(dietPlan)
+            listener.onRetrieveDietPlan(dietPlan)
 
         }
         return view
@@ -284,7 +283,7 @@ private var carbProgress=50f
         val tvExpectedWeight=requireView().findViewById<TextView>(R.id.frg_dietplan_tvExpected)
         val btnDailyIntake=requireView().findViewById<Button>(R.id.frg_dietplan_btnDailyIntake)
         tvWeeksAvailable.text="${String.format("%.1f",dayCount/7f)} weeks"
-        tvExpectedWeight.text="${String.format("%.1f",currentUser.getWeightRecord()!![0].value!!+((result*dayCount)/7f))} Kgs"
+        tvExpectedWeight.text="${String.format("%.1f",currentUser.weightRecord!![0].value!!+((result*dayCount)/7f))} Kgs"
         btnDailyIntake.text="$newDailyIntake kcal"
     }
 

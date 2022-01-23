@@ -17,7 +17,7 @@ class __FragmentSplashScreen:Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-       FirebaseAuth.getInstance().signOut()
+       //FirebaseAuth.getInstance().signOut()
         return inflater.inflate(R.layout.fragment_splash_screen, container, false)
     }
 

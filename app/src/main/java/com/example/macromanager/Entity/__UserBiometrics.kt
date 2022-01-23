@@ -2,38 +2,24 @@ package com.example.myapplication.Entity
 
 import __Record
 
- class __UserBiometrics(private var currentHeightCm:Float?=null,
-                            private var ageYears:Int?=null,
-                            private var isMale:Boolean?=null,
-                            private var activityLevelCoefficient:Float?=null,
+ class __UserBiometrics( var currentHeightCm:Float?=160f,
+                          currentWeight:Float?=75f,
+                             var ageYears:Int?=25,
+                             var isMale:Boolean?=true,
+                             var activityLevelCoefficient:Float?=1.45f,
                         )
 {
-    private var weightRecord:MutableList<__Record>? = mutableListOf()
-    private var baseMetabolicRate:Float?=0f
-    private var baseMassIndex:Float?=0f
-fun getCurrentHeight()=currentHeightCm
-fun getWeightRecord()=weightRecord
-fun getBaseMetabolicRate()=baseMetabolicRate
-fun getBaseMassIndex()=baseMassIndex
-fun isMan()=isMale
-fun getActivityLevelCoefficient()=activityLevelCoefficient
-fun getAge()=ageYears
+     var weightRecord:MutableList<__Record>? = mutableListOf(__Record(value = currentWeight!!))
+     var baseMetabolicRate:Float?=0f
+     var baseMassIndex:Float?=0f
+
 fun setNewHeight(newVal:Float){
     currentHeightCm=newVal
 }
 fun addNewWeightEntry(newEntry:__Record){
     weightRecord!!.add(newEntry)
 }
-    fun setSex(newVal:Boolean){
-        isMale=newVal
-    }
-fun setActivityLevel(newVal: Float){
-    activityLevelCoefficient=newVal
-}
-fun setNewAge(newVal: Int){
-    ageYears=newVal
-}
-    fun onUpdate(){
+   fun onUpdate(){
         baseMassIndex=(weightRecord!!.last().value/(currentHeightCm!!*currentHeightCm!!))*10000
         if(isMale!!){
             baseMetabolicRate=10f*weightRecord!!.last().value+6.25f*currentHeightCm!!-5f*ageYears!!+5f

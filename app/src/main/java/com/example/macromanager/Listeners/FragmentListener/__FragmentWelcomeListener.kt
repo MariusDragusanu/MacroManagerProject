@@ -1,4 +1,4 @@
-package com.example.macromanager.Listeners
+package com.example.macromanager.Listeners.FragmentListener
 
 interface __FragmentWelcomeListener {
     fun onRegister()

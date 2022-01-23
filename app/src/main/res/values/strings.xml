@@ -15,4 +15,32 @@
         <item> Hard exercise every day </item>
         <item> Hard exercise 2 or more times per day, or training for marathon, or triathlon</item>
     </string-array>
+    <string-array name="foodCategory">
+        <item> Meat</item>
+        <item> Dairy</item>
+        <item> Pastry</item>
+        <item> Grains</item>
+        <item> FastFood</item>
+        <item> Beverage</item>
+        <item> Cakes</item>
+        <item> Soda</item>
+        <item> Snacks</item>
+        <item> Fruits</item>
+        <item> Vegetables</item>
+        <item> Eggs</item>
+        <item> Sea Food</item>
+        <item> Fitness Supplements</item>
+    </string-array>
+    <string-array name="unitOfMeasureName">
+        <item> Gram</item>
+        <item> Milliliter</item>
+    </string-array>
+    <string-array name="mealCategory">
+        <item> Breakfast</item>
+        <item>Lunch</item>
+        <item>Dinner</item>
+        <item> Snack</item>
+        <item> Pre Workout Meal</item>
+        <item> Post Workout Meal</item>
+    </string-array>
 </resources>
