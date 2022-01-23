@@ -17,12 +17,13 @@ import com.example.macromanager.Entity.__Food
 
 import com.example.macromanager.Entity.__Meal
 import com.example.macromanager.Entity.__User2
+import com.example.macromanager.Entity.__User3
 import com.example.macromanager.R
 import com.example.macromanager.ViewModel.__UserViewModel
 import com.example.macromanager.ViewModelFactory.__UserViewModelFactory
 import com.example.myapplication.Entity.__Date
 
-class __FragmentHome(private val user: __User2):Fragment() {
+class __FragmentHome(private val user: __User3):Fragment() {
     private lateinit var viewModel: __UserViewModel
     private lateinit var recyclerView:RecyclerView
     private lateinit var rvAdapter:__MealAdapter
@@ -49,10 +50,10 @@ class __FragmentHome(private val user: __User2):Fragment() {
         val view = inflater.inflate(R.layout.fragment_main_home, container, false)
 
         viewModel = ViewModelProvider(this, __UserViewModelFactory(user))[__UserViewModel::class.java]
-         viewModel.getProperty().updateValues()
+        // viewModel.getProperty().updateValues()
          recyclerView = view.findViewById<RecyclerView>(R.id.frg_home_rvMeal)
          rvAdapter = __MealAdapter(
-            viewModel.getProperty().getMealList(), R.layout.entity_meal_layout
+            viewModel.getProperty().mealCurrentList, R.layout.entity_meal_layout
         )
         rvAdapter.setListToBeDiplayed(mutableListOf(__Meal("Breakfast").apply {
             this.addFood(__Food())
@@ -83,8 +84,8 @@ class __FragmentHome(private val user: __User2):Fragment() {
         tvTotal=view.findViewById(R.id.frg_home_tvDailyIntake)
         tvCardio=view.findViewById(R.id.frg_home_tvCardio)
         val dayString= __Date()
-        tvCardio.text="${viewModel.getProperty().getDietPlan()!!.getCardio()} kcal"
-        tvTotal.text="${viewModel.getProperty().GetCalories()} kcal"
+        tvCardio.text="${viewModel.getProperty().userDietPlan!!.cardio} test"
+        tvTotal.text="${viewModel.getProperty().GetCalories()} test"
         tvDay.text=dayString.getDateAsString()
     }
     fun updateStats(){
@@ -97,18 +98,18 @@ class __FragmentHome(private val user: __User2):Fragment() {
         val info=viewModel.getProperty()
 
         val caloriesProgress=totalCalories.toFloat()/(info.GetCalories())*100
-        val proteinProgress=totalProtein/(info.GetCalories()*info.getDietPlan()!!.proteinPercent!!*(1/4f))*100
-        val fatProgress=totalFat/(info.GetCalories()*info.getDietPlan()!!.fatPercent!!*(1/9f))*100
-        val carbProgress=totalCarbs/(info.GetCalories()*info.getDietPlan()!!.carbPercent!!*(1/4f))*100
+        val proteinProgress=totalProtein/(info.GetCalories()*info.userDietPlan!!.proteinPercent!!*(1/4f))*100
+        val fatProgress=totalFat/(info.GetCalories()*info.userDietPlan!!.fatPercent!!*(1/9f))*100
+        val carbProgress=totalCarbs/(info.GetCalories()*info.userDietPlan!!.carbPercent!!*(1/4f))*100
         val calorie_string="${(info.GetCalories()-totalCalories)} kCal"
-        val protein_string="${totalProtein}/${(info.GetCalories()*info.getDietPlan()!!.proteinPercent!!*(1/4f)).toInt()}g of proteins"
-        val fat_string="${totalFat}/${(info.GetCalories()*info.getDietPlan()!!.fatPercent!!*(1/9f)).toInt()}g of fats"
-        val carb_string="${totalCarbs}/${(info.GetCalories()*info.getDietPlan()!!.carbPercent!!*(1/4f)).toInt()}g of cabs"
+        val protein_string="${totalProtein}/${(info.GetCalories()*info.userDietPlan!!.proteinPercent!!*(1/4f)).toInt()}g of proteins"
+        val fat_string="${totalFat}/${(info.GetCalories()*info.userDietPlan!!.fatPercent!!*(1/9f)).toInt()}g of fats"
+        val carb_string="${totalCarbs}/${(info.GetCalories()*info.userDietPlan!!.carbPercent!!*(1/4f)).toInt()}g of cabs"
 
         tvCalories.text=calorie_string
         tvProtein.text=protein_string
         tvCarbs.text=carb_string
-        tvTotal.text=viewModel.getProperty().GetCalories().toString()
+        tvTotal.text="${viewModel.getProperty().GetCalories()} kcal"
         pbCalories.setProgress(caloriesProgress.toInt(),true)
         pbProtein.setProgress(proteinProgress.toInt(),true)
         pbFat.setProgress(fatProgress.toInt(),true)
@@ -121,14 +122,14 @@ class __FragmentHome(private val user: __User2):Fragment() {
             tvCalories.setTextColor(Color.parseColor("#558B2F"))
         }
         tvFat.text=fat_string
-        tvCardio.text=viewModel.getProperty().getDietPlan()!!.getCardio().toString()
+        tvCardio.text="${viewModel.getProperty().userDietPlan!!.cardio} kcal"
     }
     fun updateValues(){
         totalCarbs=0
         totalFat=0
         totalProtein=0
         totalCalories=0
-        for(meal in viewModel.getProperty().getMealList()!!){
+        for(meal in viewModel.getProperty().mealCurrentList!!){
             for(food in meal.getList()){
                 totalCalories+=(food.Quantity*food.caloriesIn100UM/100).toInt()
                 totalProtein+=(food.Quantity*food.nProteins/100).toInt()

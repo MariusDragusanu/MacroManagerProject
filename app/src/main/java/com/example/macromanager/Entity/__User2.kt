@@ -7,7 +7,7 @@ import com.google.firebase.auth.FirebaseUser
 
 class __User2( firebaseUser: FirebaseUser?=null) {
 
-    var UID=firebaseUser?.uid
+  /*  var UID=firebaseUser?.uid
     private var accountInformation:__UserAccountInformation?=null
     private var userBiometrics : __UserBiometrics?=null
     private var userDietPlan : __UserDietPlan?=null
@@ -34,7 +34,7 @@ class __User2( firebaseUser: FirebaseUser?=null) {
 
     fun hasActiveDietPlan(): Boolean {
         var result = false
-        if (__Utility.computeTime(accountInformation!!.getEntryDate()!!, userDietPlan!!.getStartDate()) <= 0) {
+        if (__Utility.computeTime(accountInformation!!.getEntryDate()!!, userDietPlan!!.startDate!!) <= 0) {
             result = true
         }
         return result
@@ -47,8 +47,8 @@ class __User2( firebaseUser: FirebaseUser?=null) {
     fun updateValues() {
         userBiometrics!!.onUpdate()
         userDietPlan!!.onUserInfoChanged(
-            userBiometrics!!.getBaseMetabolicRate()!!,
-            userBiometrics!!.getActivityLevelCoefficient()!!
+            userBiometrics!!.baseMetabolicRate!!,
+            userBiometrics!!.activityLevelCoefficient!!
         )
     }
 
@@ -108,16 +108,5 @@ class __User2( firebaseUser: FirebaseUser?=null) {
     fun addNewWeight(value: Float) {
         this.userBiometrics!!.addNewWeightEntry(__Record(__Date(), value))
     }
-
-    fun setUserBiometrics(biometrics: __UserBiometrics) {
-        userBiometrics = biometrics
-    }
-
-    fun setDietPlan(dietPlan: __UserDietPlan) {
-        this.userDietPlan = dietPlan
-    }
-
-    fun setAccountInformation(userAccountInformation: __UserAccountInformation) {
-        this.accountInformation=userAccountInformation
-    }
+    */
 }

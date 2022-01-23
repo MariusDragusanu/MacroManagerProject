@@ -11,6 +11,9 @@
     app:cardElevation="10dp"
     app:cardMaxElevation="10dp"
     app:cardPreventCornerOverlap="true"
+    android:foreground="?attr/selectableItemBackground"
+    android:stateListAnimator="@animator/animator1"
+    android:clickable="true"
     app:cardUseCompatPadding="false">
 
     <!--
@@ -40,21 +43,20 @@
             app:layout_constraintVertical_bias="0.0">
 
             <ImageView
-                android:id="@+id/entity_meal_ivCategory"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:id="@+id/entity_food_ivCategory"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginEnd="10dp"
-                app:layout_constraintEnd_toStartOf="@+id/entity_meal_tvTitle"
+                app:layout_constraintEnd_toStartOf="@+id/entity_food_tvTitle"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/icon_meal" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/entity_meal_tvTitle"
+                android:id="@+id/entity_food_tvTitle"
                 android:layout_width="0dp"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
@@ -62,15 +64,15 @@
                 android:text="TextView"
                 android:textAppearance="@style/TextAppearance.App.Subtitle1"
                 android:textColor="@color/colorText"
-                android:textSize="25sp"
-                app:layout_constraintBottom_toTopOf="@+id/entity_meal_clMoreInfo"
-                app:layout_constraintEnd_toStartOf="@+id/imageButton"
-                app:layout_constraintStart_toEndOf="@+id/entity_meal_ivCategory"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@+id/entity_food_clMoreInfo"
+                app:layout_constraintEnd_toStartOf="@+id/entity_food_btnMore"
+                app:layout_constraintStart_toEndOf="@+id/entity_food_ivCategory"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.0" />
 
             <ImageButton
-                android:id="@+id/entity_meal_btnMore"
+                android:id="@+id/entity_food_btnMore"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:layout_marginTop="10dp"
@@ -81,17 +83,17 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/entity_meal_clMoreInfo"
+                android:id="@+id/entity_food_clMoreInfo"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:alwaysDrawnWithCache="false"
                 android:animateLayoutChanges="true"
-                android:visibility="visible"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/entity_meal_ivCategory">
+                app:layout_constraintTop_toBottomOf="@+id/entity_food_tvBrand">
 
                 <TextView
                     android:id="@+id/textView3"
@@ -113,58 +115,15 @@
                     android:layout_width="0dp"
                     android:layout_height="3dp"
                     android:layout_marginStart="10dp"
-                    android:layout_marginTop="2dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginEnd="10dp"
                     android:background="@color/colorBackgroundStart"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/entity_meal_btnAddFood" />
-
-                <ProgressBar
-                    android:id="@+id/entity_meal_pbProtein"
-                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginEnd="30dp"
-                    android:progressDrawable="@drawable/progressbar"
-                    app:layout_constraintEnd_toStartOf="@+id/entity_meal_pbFat"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/divider4" />
-
-                <ProgressBar
-                    android:id="@+id/entity_meal_pbCarbs"
-                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginEnd="20dp"
-                    android:progressDrawable="@drawable/progressbar"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@+id/entity_meal_pbFat"
-                    app:layout_constraintTop_toBottomOf="@+id/divider4" />
-
-                <ProgressBar
-                    android:id="@+id/entity_meal_pbFat"
-                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginEnd="30dp"
-                    android:progressDrawable="@drawable/progressbar"
-                    app:layout_constraintEnd_toStartOf="@+id/entity_meal_pbCarbs"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@+id/entity_meal_pbProtein"
-                    app:layout_constraintTop_toBottomOf="@+id/divider4" />
+                    app:layout_constraintTop_toBottomOf="@+id/entity_food_btnAddFood" />
 
                 <TextView
-                    android:id="@+id/entity_meal_tvProtein"
+                    android:id="@+id/entity_food_tvProtein"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
@@ -175,12 +134,12 @@
                     android:textAppearance="@style/TextAppearance.App.Subtitle1"
                     android:textColor="@color/colorText"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/entity_meal_tvFat"
+                    app:layout_constraintEnd_toStartOf="@+id/entity_food_tvFat"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/entity_meal_pbProtein" />
+                    app:layout_constraintTop_toBottomOf="@+id/divider4" />
 
                 <TextView
-                    android:id="@+id/entity_meal_tvFat"
+                    android:id="@+id/entity_food_tvFat"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
@@ -192,12 +151,12 @@
                     android:textAppearance="@style/TextAppearance.App.Subtitle1"
                     android:textColor="@color/colorText"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/entity_meal_tvCarbs"
-                    app:layout_constraintStart_toEndOf="@+id/entity_meal_tvProtein"
-                    app:layout_constraintTop_toBottomOf="@+id/entity_meal_pbFat" />
+                    app:layout_constraintEnd_toStartOf="@+id/entity_food_tvCarbs"
+                    app:layout_constraintStart_toEndOf="@+id/entity_food_tvProtein"
+                    app:layout_constraintTop_toBottomOf="@+id/divider4" />
 
                 <TextView
-                    android:id="@+id/entity_meal_tvCarbs"
+                    android:id="@+id/entity_food_tvCarbs"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
@@ -210,11 +169,11 @@
                     android:textColor="@color/colorText"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/entity_meal_tvFat"
-                    app:layout_constraintTop_toBottomOf="@+id/entity_meal_pbCarbs" />
+                    app:layout_constraintStart_toEndOf="@+id/entity_food_tvFat"
+                    app:layout_constraintTop_toBottomOf="@+id/divider4" />
 
                 <TextView
-                    android:id="@+id/entity_meal_tvTotal"
+                    android:id="@+id/entity_food_tvTotal"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
@@ -227,38 +186,40 @@
                     android:textColor="#558B2F"
                     android:textSize="20sp"
                     app:layout_constraintBottom_toTopOf="@+id/divider4"
-                    app:layout_constraintEnd_toStartOf="@+id/entity_meal_btnAddFood"
+                    app:layout_constraintEnd_toStartOf="@+id/entity_food_btnAddFood"
                     app:layout_constraintStart_toEndOf="@+id/textView3"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageButton
-                    android:id="@+id/entity_meal_btnAddFood"
+                    android:id="@+id/entity_food_btnAddFood"
                     android:layout_width="0dp"
                     android:layout_height="30dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:background="@android:drawable/ic_menu_preferences"
+                    android:background="@android:drawable/ic_menu_add"
                     android:backgroundTint="@color/colorAccent"
                     android:src="@drawable/btn_invisible"
                     android:text="Button"
-                    app:layout_constraintBottom_toTopOf="@+id/divider4"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <ImageButton
-                android:id="@+id/imageButton"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
+            <TextView
+                android:id="@+id/entity_food_tvBrand"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:background="@drawable/btn_invisible"
-                app:layout_constraintEnd_toStartOf="@+id/entity_meal_btnMore"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@android:drawable/ic_menu_delete"
-                app:tint="#BFC62828" />
+                android:layout_marginEnd="55dp"
+                android:layout_marginBottom="10dp"
+                android:text="TextView"
+                android:textAppearance="@style/TextAppearance.App.Subtitle1"
+                app:layout_constraintBottom_toTopOf="@+id/entity_food_clMoreInfo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/entity_food_ivCategory"
+                app:layout_constraintTop_toBottomOf="@+id/entity_food_tvTitle" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

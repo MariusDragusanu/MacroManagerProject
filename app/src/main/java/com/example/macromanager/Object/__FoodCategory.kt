@@ -1,4 +1,4 @@
-package com.example.myapplication.Object
+package com.example.macromanager.Object
 
 object __FoodCategory {
     const val Egg: String="Eggs"

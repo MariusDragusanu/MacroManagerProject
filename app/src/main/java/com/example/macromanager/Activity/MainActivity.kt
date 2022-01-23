@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.example.macromanager.Entity.__User2
+import com.example.macromanager.Entity.__User3
 import com.example.macromanager.Fragments.__FragmentAccount
 import com.example.macromanager.Fragments.__FragmentFoodLibrary
 import com.example.macromanager.Fragments.__FragmentHome
@@ -23,17 +24,11 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity(),__UserRepositoryListener {
-private lateinit var user2: __User2
+private lateinit var user2: __User3
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val bar=findViewById<ProgressBar>(R.id.main_pnBar)
-        bar.visibility=INVISIBLE
-        val fragmentArrayList= mutableListOf(__FragmentFoodLibrary(),__FragmentHome(__User2(firebaseUser = FirebaseAuth.getInstance().currentUser)),__FragmentAccount())
-        val pager=findViewById<ViewPager2>(R.id.main_ViewPager)
-        val adapter=__GenericViewPagerAdapter(fragmentArrayList,supportFragmentManager,lifecycle)
-        pager.adapter=adapter
         __UserRepository2.setListener(this)
         __UserRepository2.getInstance()?.retrieveUser(FirebaseAuth.getInstance().currentUser?.uid!!)
 
@@ -63,14 +58,15 @@ private lateinit var user2: __User2
             }
         }
     }
-    override fun getUser(retrievedUser: __User2) {
+    override fun getUser(retrievedUser: __User3) {
                CoroutineScope(Dispatchers.Main).launch {
                  user2=retrievedUser
-                   user2.getAccountInfo()!!.setEmail(FirebaseAuth.getInstance().currentUser?.email!!)
-                   Log.d("Test","from here")
-                   Toast.makeText(this@MainActivity, retrievedUser.UID, Toast.LENGTH_SHORT).show()
                    val bar=findViewById<ProgressBar>(R.id.main_pnBar)
                    bar.visibility=INVISIBLE
+                   val fragmentArrayList= mutableListOf(__FragmentFoodLibrary(user2),__FragmentHome(user2),__FragmentAccount())
+                   val pager=findViewById<ViewPager2>(R.id.main_ViewPager)
+                   val adapter=__GenericViewPagerAdapter(fragmentArrayList,supportFragmentManager,lifecycle)
+                   pager.adapter=adapter
                }
     }
 }

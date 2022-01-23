@@ -1,23 +1,21 @@
 package com.example.macromanager.Managers
 
-import android.content.Context
-import com.example.macromanager.Listeners.__AccountManagerListener
+import com.example.macromanager.Listeners.__FirebaseAccountManagerListener
 import com.google.firebase.auth.*
-import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 
-class __AccountManager private constructor(){
+class __FirebaseAccountManager private constructor(){
     private var firebaseAuth=FirebaseAuth.getInstance()
-    private lateinit var listener: __AccountManagerListener
+    private lateinit var listener: __FirebaseAccountManagerListener
     private  var currentUser:FirebaseUser?=null
 
     companion object{
-        private val instance=__AccountManager()
+        private val instance=__FirebaseAccountManager()
         fun getInstance()= instance
-        fun setListener(newListener: __AccountManagerListener){
+        fun setListener(newListener: __FirebaseAccountManagerListener){
             instance.listener=newListener
         }
     }
@@ -25,35 +23,34 @@ class __AccountManager private constructor(){
            try {
                firebaseAuth.createUserWithEmailAndPassword(email, password).addOnSuccessListener {
 
-                   listener.getRegisterRequestStatus(true)
+                   listener.getRequestStatus("CREATE_FIREBASE_ACCOUNT",true)
                    currentUser = firebaseAuth.currentUser!!
+                   listener.getCurrentFirebaseAccount(currentUser)
 
                }.addOnFailureListener {
-                   listener.getErrorMessage(it.message.toString())
-                   listener.getRegisterRequestStatus(false)
+                   listener.getRequestStatus("CREATE_FIREBASE_ACCOUNT",false,it)
                }.await()
            }catch (e:Exception){
-               listener.getErrorMessage(e.message!!)
-               listener.getRegisterRequestStatus(false)
+               listener.getRequestStatus("CREATE_FIREBASE_ACCOUNT",false,e)
            }
 
         }
-    fun signInAsGuest()= CoroutineScope(Dispatchers.IO).launch {
+    fun createFirebaseGuestAccount()= CoroutineScope(Dispatchers.IO).launch {
         try {
             firebaseAuth.signInAnonymously().addOnCompleteListener {
                 if(it.isSuccessful){
+                    listener.getRequestStatus("CREATE_FIREBASE_GUEST_ACCOUNT",true)
                     currentUser=firebaseAuth.currentUser
-                    listener.getGuestRegisterRequestStatus(true)
-                    listener.getAccount(currentUser)
+                    listener.getCurrentFirebaseAccount(currentUser)
                 }
                 if(it.isCanceled){
-                    listener.getGuestRegisterRequestStatus(false)
-                listener.getErrorMessage(it.exception?.message.toString())
+                    listener.getRequestStatus("CREATE_FIREBASE_GUEST_ACCOUNT",false,it.exception)
+                listener.getRequestStatus("CREATE_FIREBASE_GUEST_ACCOUNT",false,it.exception)
                 }
             }.await()
         }
         catch (e:Exception){
-            listener.getErrorMessage(e.message.toString())
+            listener.getRequestStatus("CREATE_FIREBASE_GUEST_ACCOUNT",false,e)
         }
 
     }
@@ -61,10 +58,11 @@ class __AccountManager private constructor(){
 
         val credentials = EmailAuthProvider.getCredential(email, password)
         currentUser?.reauthenticate(credentials)?.addOnSuccessListener {
+            listener.getRequestStatus("DELETE_FIREBASE_ACCOUNT",true)
             currentUser?.delete()
 
         }?.addOnFailureListener {
-          listener.getErrorMessage(it.message.toString())
+          listener.getRequestStatus("DELETE_FIREBASE_ACCOUNT",false,it)
         }?.await()
     }
     fun signOutAccount(){
@@ -72,20 +70,20 @@ class __AccountManager private constructor(){
             firebaseAuth.signOut()
         }
     }
-    fun signInWithGoogleCredentials(credential: AuthCredential)= CoroutineScope(Dispatchers.IO).launch {
+    fun createFirebaseAccountFromGoogleCredentials(credential: AuthCredential)= CoroutineScope(Dispatchers.IO).launch {
         try {
             firebaseAuth.signInWithCredential(credential).addOnCompleteListener {
                 if(it.isSuccessful){
-                    listener.getRegisterRequestStatus(true)
-                    this@__AccountManager.currentUser=firebaseAuth.currentUser
+                    listener.getRequestStatus("CREATE_ACCOUNT_FROM_GOOGLE",true)
+                    this@__FirebaseAccountManager.currentUser=firebaseAuth.currentUser
                 }
                 else{
-                    listener.getRegisterRequestStatus(false)
+                      listener.getRequestStatus("CREATE_ACCOUNT_FROM_GOOGLE",false,it.exception)
                 }
             }.await()
 
         }catch (e:Exception){
-            listener.getErrorMessage(e.message.toString())
+            listener.getRequestStatus("CREATE_ACCOUNT_FROM_GOOGLE",false,e)
         }
     }
     fun logInFirebaseAccount(email: String,password: String)=CoroutineScope(Dispatchers.IO).launch {
@@ -93,18 +91,19 @@ class __AccountManager private constructor(){
             firebaseAuth.signInWithEmailAndPassword(email, password).addOnSuccessListener {
 
                 currentUser = firebaseAuth.currentUser!!
-                listener.getLogInRequestStatus(true)
+                listener.getRequestStatus("LOG_IN_FIREBASE_ACCOUNT",true)
+                listener.getCurrentFirebaseAccount(currentUser)
 
             }.addOnFailureListener {
-                listener.getErrorMessage(it.message.toString())
-                listener.getLogInRequestStatus(false)
+                listener.getRequestStatus("LOG_IN_FIREBASE_ACCOUNT",false,it)
+
             }.await()
         }catch (e:Exception){
-            listener.getErrorMessage(e.message!!)
-            listener.getLogInRequestStatus(false)
+            listener.getRequestStatus("LOG_IN_FIREBASE_ACCOUNT",false,e)
+
         }
 
     }
-  fun getSavedAccount()=currentUser
+
 
 }

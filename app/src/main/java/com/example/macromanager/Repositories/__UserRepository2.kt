@@ -3,6 +3,7 @@ package com.example.myapplication.Repository
 import android.content.Context
 import android.util.Log
 import com.example.macromanager.Entity.__User2
+import com.example.macromanager.Entity.__User3
 
 import com.example.myapplication.Listeners.__UserRepositoryListener
 import com.example.myapplication.Object.__DatabaseAttributeTag
@@ -37,7 +38,7 @@ companion object{
 
     }
 
-    fun createUser(user:__User2)= CoroutineScope(Dispatchers.IO).launch {
+    fun createUser(user: __User3)= CoroutineScope(Dispatchers.IO).launch {
         try{
             usersCollection.document(user.UID!!).set(user).addOnCompleteListener {
                 if(it.isSuccessful){
@@ -87,7 +88,7 @@ fun retrieveUser(uid:String)= CoroutineScope(Dispatchers.IO).launch {
         if(!userSnapshot.isEmpty)
             for(documents in userSnapshot.documents) {
                 if (documents.id.equals(uid)) {
-                    val user = documents.toObject(__User2::class.java)
+                    val user = documents.toObject(__User3::class.java)
                     if (user != null) {
                       listener.getUser(user)
                         listener.getRequestStatus("RETRIEVE_USER",true)
@@ -100,7 +101,7 @@ fun retrieveUser(uid:String)= CoroutineScope(Dispatchers.IO).launch {
         Log.d("Test",e.message.toString())
     }
 }
-fun updateUser(currentUser:__User2)= CoroutineScope(Dispatchers.IO).launch {
+fun updateUser(currentUser:__User3)= CoroutineScope(Dispatchers.IO).launch {
     try {
         usersCollection.document(currentUser.UID!!).get().addOnSuccessListener {
             if (it.exists()) {
@@ -114,7 +115,7 @@ fun updateUser(currentUser:__User2)= CoroutineScope(Dispatchers.IO).launch {
         listener.getRequestStatus("UPDATE_USER",false,"__User_Repository:An error has occurred while updating the account\n Error:${e.message}")
     }
 }
-    fun deleteUser(oldUser: __User2)= CoroutineScope(Dispatchers.IO).launch {
+    fun deleteUser(oldUser: __User3)= CoroutineScope(Dispatchers.IO).launch {
         try {
             usersCollection.whereEqualTo(__DatabaseAttributeTag.USER_UID, oldUser.UID).get().addOnSuccessListener {
                 if (it.documents.isNotEmpty()) {
@@ -128,15 +129,16 @@ fun updateUser(currentUser:__User2)= CoroutineScope(Dispatchers.IO).launch {
             listener.getRequestStatus("DELETE_USER",false,"__User_Repository:An error has occurred while deleting the account\n Error:${e.message}")
         }
     }
-    fun userToHashMap(user: __User2):Map<String,Any> {
+    fun userToHashMap(user: __User3):Map<String,Any> {
         val map = mutableMapOf<String, Any>()
         map[__DatabaseAttributeTag.USER_UID]=user.UID!!
-        map[__DatabaseAttributeTag.USER_ACCOUNT_INFORMATION]=user.getAccountInfo()!!
-        map[__DatabaseAttributeTag.USER_MEAL_LIST_ATTRIBUTE] = user.getMealList()
-        map[__DatabaseAttributeTag.USER_FAV_FOOD_LIST_ATTRIBUTE] = user.getFavoriteFoodList()
-        map[__DatabaseAttributeTag.USER_RECENT_FOOD_LIST_ATTRIBUTE] = user.getRecentFoodList()
-        map[__DatabaseAttributeTag.USER_BIOMETRICS_ATTRIBUTE] = user.getUserBiometrics()!!
-        map[__DatabaseAttributeTag.USER_DIET_PLAN_ATTRIBUTE] = user.getDietPlan()!!
+        map[__DatabaseAttributeTag.USER_ACCOUNT_INFORMATION]=user.userAccountInformation!!
+        map[__DatabaseAttributeTag.USER_MEAL_LIST_ATTRIBUTE] = user.mealCurrentList
+        map[__DatabaseAttributeTag.USER_FAV_FOOD_LIST_ATTRIBUTE] = user.foodFavoriteList
+        map[__DatabaseAttributeTag.USER_RECENT_FOOD_LIST_ATTRIBUTE] = user.foodRecentList
+        map[__DatabaseAttributeTag.USER_BIOMETRICS_ATTRIBUTE] = user.userBiometrics!!
+        map[__DatabaseAttributeTag.USER_DIET_PLAN_ATTRIBUTE] = user.userDietPlan!!
+        map[__DatabaseAttributeTag.USER_SAVED_MEAL_ATTRIBUTE]=user.mealSavedList
         return map
     }
 }

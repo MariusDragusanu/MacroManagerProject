@@ -1,89 +1,71 @@
-@rem
-@rem Copyright 2015 the original author or authors.
-@rem
-@rem Licensed under the Apache License, Version 2.0 (the "License");
-@rem you may not use this file except in compliance with the License.
-@rem You may obtain a copy of the License at
-@rem
-@rem      https://www.apache.org/licenses/LICENSE-2.0
-@rem
-@rem Unless required by applicable law or agreed to in writing, software
-@rem distributed under the License is distributed on an "AS IS" BASIS,
-@rem WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-@rem See the License for the specific language governing permissions and
-@rem limitations under the License.
-@rem
+package com.example.macromanager.Fragments
 
-@if "%DEBUG%" == "" @echo off
-@rem ##########################################################################
-@rem
-@rem  Gradle startup script for Windows
-@rem
-@rem ##########################################################################
-
-@rem Set local scope for the variables with windows NT shell
-if "%OS%"=="Windows_NT" setlocal
-
-set DIRNAME=%~dp0
-if "%DIRNAME%" == "" set DIRNAME=.
-set APP_BASE_NAME=%~n0
-set APP_HOME=%DIRNAME%
-
-@rem Resolve any "." and ".." in APP_HOME to make it shorter.
-for %%i in ("%APP_HOME%") do set APP_HOME=%%~fi
-
-@rem Add default JVM options here. You can also use JAVA_OPTS and GRADLE_OPTS to pass JVM options to this script.
-set DEFAULT_JVM_OPTS="-Xmx64m" "-Xms64m"
-
-@rem Find java.exe
-if defined JAVA_HOME goto findJavaFromJavaHome
-
-set JAVA_EXE=java.exe
-%JAVA_EXE% -version >NUL 2>&1
-if "%ERRORLEVEL%" == "0" goto execute
-
-echo.
-echo ERROR: JAVA_HOME is not set and no 'java' command could be found in your PATH.
-echo.
-echo Please set the JAVA_HOME variable in your environment to match the
-echo location of your Java installation.
-
-goto fail
-
-:findJavaFromJavaHome
-set JAVA_HOME=%JAVA_HOME:"=%
-set JAVA_EXE=%JAVA_HOME%/bin/java.exe
-
-if exist "%JAVA_EXE%" goto execute
-
-echo.
-echo ERROR: JAVA_HOME is set to an invalid directory: %JAVA_HOME%
-echo.
-echo Please set the JAVA_HOME variable in your environment to match the
-echo location of your Java installation.
-
-goto fail
-
-:execute
-@rem Setup the command line
-
-set CLASSPATH=%APP_HOME%\gradle\wrapper\gradle-wrapper.jar
+import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.Toast
+import androidx.navigation.fragment.findNavController
+import androidx.viewpager2.widget.ViewPager2
+import com.example.macromanager.Entity.__User2
+import com.example.macromanager.Listeners.__FragmentWelcomeListener
+import com.example.macromanager.Listeners.__FragmentAccountInformationListener
+import com.example.macromanager.Listeners.__FragmentUserBiometricsListener
+import com.example.macromanager.R
+import com.example.macromanager.ViewPagers.__GenericViewPagerAdapter
+import com.example.myapplication.Entity.__User
+import com.example.myapplication.Entity.__UserBiometrics
+import com.example.myapplication.Listeners.__UserRepositoryListener
+import com.example.myapplication.Repository.__UserRepository2
+import com.google.firebase.auth.FirebaseUser
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 
-@rem Execute Gradle
-"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %GRADLE_OPTS% "-Dorg.gradle.appname=%APP_BASE_NAME%" -classpath "%CLASSPATH%" org.gradle.wrapper.GradleWrapperMain %*
+class __FragmentOnBoard : Fragment(), __FragmentWelcomeListener,__Register1Listener,__Register2Listener,__UserRepositoryListener {
+    lateinit var viewPager2: ViewPager2
+    lateinit var pagerAdapter: __GenericViewPagerAdapter
+    private lateinit var user:__User2
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val view=inflater.inflate(R.layout.fragment_on_board, container, false)
+        __UserRepository2.setListener(this)
+        viewPager2=view.findViewById(R.id.frg_onboard_ViewPager)
+        val frgWelcome=__FragmentWelcome()
+        val frgReg1=__FragmentRegister1()
+        val frgReg2=__FragmentRegister2()
+        frgWelcome.setListener(this)
+        frgReg1.setListener(this)
+        frgReg2.setListener(this)
+        val fragmentList= mutableListOf(frgWelcome,frgReg1,frgReg2)
+        pagerAdapter= __GenericViewPagerAdapter(fragmentList,requireActivity().supportFragmentManager,lifecycle)
+        viewPager2.adapter=pagerAdapter
+        return view
+    }
 
-:end
-@rem End local scope for the variables with windows NT shell
-if "%ERRORLEVEL%"=="0" goto mainEnd
+    override fun getNewAccount(firebaseUser: FirebaseUser?) {
+        user= __User2(firebaseUser)
+        Toast.makeText(requireContext(), firebaseUser?.email, Toast.LENGTH_SHORT).show()
+        viewPager2.currentItem=1
+    }
 
-:fail
-rem Set variable GRADLE_EXIT_CONSOLE if you need the _script_ return code instead of
-rem the _cmd.exe /c_ return code!
-if  not "" == "%GRADLE_EXIT_CONSOLE%" exit 1
-exit /b 1
+    override fun getBiometrics(userBiometrics: __UserBiometrics) {
+       user.setUserBiometrics(userBiometrics)
+    }
 
-:mainEnd
-if "%OS%"=="Windows_NT" endlocal
+    override fun hasFinishedRegistration(state: Boolean) {
+        if(state){
+           __UserRepository2.getInstance()?.createUser(user = user)
+        }
+        else{
+             viewPager2.currentItem=3
+        }
+    }
 
-:omega
+    ove
