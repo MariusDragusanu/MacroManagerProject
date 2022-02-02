@@ -2,16 +2,16 @@ package com.example.myapplication.Entity
 
 import __Record
 
- class __UserBiometrics( var currentHeightCm:Float?=160f,
-                          currentWeight:Float?=75f,
-                             var ageYears:Int?=25,
+ class __UserBiometrics( var currentHeightCm:Float=160f,
+                          currentWeight:Float=75f,
+                             var ageYears:Int=25,
                              var isMale:Boolean?=true,
-                             var activityLevelCoefficient:Float?=1.45f,
+                             var activityLevelCoefficient:Float=1.45f,
                         )
 {
-     var weightRecord:MutableList<__Record>? = mutableListOf(__Record(value = currentWeight!!))
-     var baseMetabolicRate:Float?=0f
-     var baseMassIndex:Float?=0f
+     var weightRecord:MutableList<__Record> = mutableListOf(__Record(value = currentWeight!!))
+     var baseMetabolicRate:Float=0f
+     var baseMassIndex:Float=0f
 
 fun setNewHeight(newVal:Float){
     currentHeightCm=newVal

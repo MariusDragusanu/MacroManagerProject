@@ -3,14 +3,14 @@ package com.example.myapplication.Entity
 import android.util.Log
 import com.example.myapplication.Object.__Utility
 
-class __UserDietPlan( var proteinPercent:Float?=null,
-                      var fatPercent:Float?=null,
-                      var carbPercent:Float?=null) {
-    var startDate: __Date? = __Date()
-    var endDate: __Date? = __Date()
-    var baseCalories: Int? = 0
-    var weeklyProgress: Int? = 50
-    var cardio: Int? = 0
+class __UserDietPlan( var proteinPercent:Float=0.3f,
+                      var fatPercent:Float=0.2f,
+                      var carbPercent:Float=0.5f) {
+    var startDate: __Date = __Date()
+    var endDate: __Date?= __Date()
+    var baseCalories: Int = 0
+    var weeklyProgress: Int = 50
+    var cardio: Int = 0
 
 
     fun setNewGoalTimeframe(date1: __Date, date2: __Date) {
@@ -30,7 +30,7 @@ class __UserDietPlan( var proteinPercent:Float?=null,
     fun calculateTotalCalories(): Int {
 
 
-        return baseCalories!! + cardio!!
+        return baseCalories+ cardio
     }
 
     fun onUserInfoChanged(newBmr: Float, newActivityLevel: Float) {

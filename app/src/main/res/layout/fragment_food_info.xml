@@ -33,7 +33,7 @@
                     android:layout_marginEnd="10dp"
                     android:text="TextView"
                     android:textAppearance="@style/TextAppearance.App.Subtitle1"
-                    android:textColor="@color/colorText"
+                    android:textColor="@color/progress3"
                     android:textSize="16sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/frg_food_info_pieChartMacros"
@@ -48,7 +48,7 @@
                     android:layout_marginEnd="10dp"
                     android:text="TextView"
                     android:textAppearance="@style/TextAppearance.App.Subtitle1"
-                    android:textColor="@color/colorText"
+                    android:textColor="@color/progress2"
                     android:textSize="16sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/frg_food_info_pieChartMacros"
@@ -60,7 +60,6 @@
                     android:layout_height="40dp"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="20dp"
-                    android:src="@drawable/icon_food_dairy"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -182,7 +181,8 @@
                     <com.google.android.material.textfield.MaterialAutoCompleteTextView
                         android:id="@+id/frg_food_info_actvServing"
                         android:layout_width="match_parent"
-                        android:layout_height="50dp" />
+                        android:layout_height="55dp"
+                        android:inputType="none" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -217,7 +217,8 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/frg_food_info_etQuantity"
                         android:layout_width="match_parent"
-                        android:layout_height="50dp" />
+                        android:layout_height="wrap_content"
+                        android:inputType="number|numberDecimal" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -253,7 +254,8 @@
                     <com.google.android.material.textfield.MaterialAutoCompleteTextView
                         android:id="@+id/frg_food_info_actvMeal"
                         android:layout_width="match_parent"
-                        android:layout_height="50dp" />
+                        android:layout_height="55dp"
+                        android:inputType="none" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <androidx.appcompat.widget.AppCompatButton
@@ -281,7 +283,7 @@
                     android:layout_marginEnd="10dp"
                     android:text="TextView"
                     android:textAppearance="@style/TextAppearance.App.Subtitle1"
-                    android:textColor="@color/colorText"
+                    android:textColor="@color/progress1"
                     android:textSize="16sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/frg_food_info_pieChartMacros"

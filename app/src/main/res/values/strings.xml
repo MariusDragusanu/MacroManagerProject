@@ -40,7 +40,7 @@
         <item>Lunch</item>
         <item>Dinner</item>
         <item> Snack</item>
-        <item> Pre Workout Meal</item>
-        <item> Post Workout Meal</item>
+        <item> Pre-Workout Meal</item>
+        <item> Post-Workout Meal</item>
     </string-array>
 </resources>

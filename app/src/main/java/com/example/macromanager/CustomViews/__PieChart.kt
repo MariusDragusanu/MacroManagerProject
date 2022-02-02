@@ -21,7 +21,7 @@ class __PieChart(context:Context,viewAttributes: AttributeSet): View(context,vie
     var progress1Color: Int=resources.getColor(R.color.progress1)
     var progress2Color:Int=resources.getColor(R.color.progress2)
     var progress3Color:Int= resources.getColor(R.color.progress3)
-    var radius=150f
+    var radius=125f
     private var sizeVector:Point= Point()
     private var paddingVector:Point= Point(50,50)
     var dataEntries= arrayListOf<Pair<String,Float>>(Pair("Protein",20f),Pair("Fat",40f),Pair("Carbs",40f))
@@ -87,7 +87,7 @@ class __PieChart(context:Context,viewAttributes: AttributeSet): View(context,vie
                 brush
             )
         }
-        Log.d("test","A:${angleA},B:${angleB}")
+
     }
    private  fun getPointFromAngle(angle:Float):PointF{
         return PointF(cos(angle)*radius,sin(angle)*radius)
@@ -100,7 +100,7 @@ class __PieChart(context:Context,viewAttributes: AttributeSet): View(context,vie
         brush.strokeWidth=2f
 
         brush.color=color
-        Log.d("Test","X:${sizeVector.x+pointF.x},Y:${sizeVector.y+pointF.y}")
+
         if(pointF.x+sizeVector.x>sizeVector.x) {
             brush.color=color
             canvas?.drawText(string, 0, string.length, sizeVector.x/2f+pointF.x+50f ,sizeVector.y/2f+pointF.y-30f , brush)
@@ -123,7 +123,7 @@ class __PieChart(context:Context,viewAttributes: AttributeSet): View(context,vie
     fun computeAngles(){
        angleEntries.clear()
         angleEntries.add(0f)
-        Log.d("alabalaportocala","${dataEntries.size}, ${angleEntries.size}")
+
         angleEntries.add((dataEntries[0].second/total)*2*__Utility.PI)
         for(index in 2 until dataEntries.size){
             val angle=angleEntries[index-1]+(dataEntries[index-1].second/total)*2f*__Utility.PI

@@ -6,27 +6,16 @@ import com.google.firebase.auth.FirebaseUser
 
  class __UserAccountInformation(firebaseUser: FirebaseUser?=FirebaseAuth.getInstance().currentUser){
      private var email=firebaseUser?.email
-     private var isAnonymous=firebaseUser?.isAnonymous
-     private var emailVerified=firebaseUser?.isEmailVerified
-     private var providerId=firebaseUser?.providerId
-     private var rememberMe:Boolean?=false
-     private var entryDate:__Date?= __Date()
-     private var exitDate:__Date?=__Date()
+      var isAnonymous=firebaseUser?.isAnonymous
+      var emailVerified=firebaseUser?.isEmailVerified
+      var providerId=firebaseUser?.providerId
+      var rememberMe:Boolean=false
+      var entryDate:__Date= __Date()
+      var exitDate:__Date=__Date()
      fun getEmail()=email
      fun setEmail(newEmail:String){
          email=newEmail
      }
-     fun setRememberMe(boolean: Boolean){
-         rememberMe=boolean
-     }
-     fun getRememberMe()=rememberMe
-     fun setEntryDate(newEntry:__Date= __Date()){
-         entryDate=newEntry
-     }
-     fun setExitDate(newEntry: __Date){
-         exitDate=newEntry
-     }
-     fun getExitDate()=exitDate
-     fun getEntryDate()=entryDate
+
 
 }

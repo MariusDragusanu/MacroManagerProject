@@ -44,8 +44,8 @@ class __FragmentOnBoard : Fragment(),__FragmentWelcomeListener,__FragmentAccount
         val view = inflater.inflate(R.layout.fragment_on_board, container, false)
         viewPager2=view.findViewById(R.id.frg_onboard_ViewPager)
         val fragmentWelcome=__FragmentWelcome()
-        val fragmentAccountInformation=__FragmentAccountInformation()
-        val fragmentUserBiometrics=__FragmentUserBiometrics()
+        val fragmentAccountInformation=__FragmentOnBoardAccountInformation()
+        val fragmentUserBiometrics=__FragmentOnBoardBiometrics()
 
         fragmentAccountInformation.setListener(this)
         fragmentUserBiometrics.setListener(this)
@@ -75,7 +75,7 @@ class __FragmentOnBoard : Fragment(),__FragmentWelcomeListener,__FragmentAccount
     override fun onRetrieveUserBiometrics(userBiometrics: __UserBiometrics) {
         this.userBiometrics=userBiometrics
         this.userBiometrics!!.onUpdate()
-        val frgDietPlan=__FragmentDietPlan(this.userBiometrics!!)
+        val frgDietPlan=__FragmentOnBoardDietPlan(this.userBiometrics!!)
         frgDietPlan.setListener(this)
         pagerAdapter.setSecondaryFragment(frgDietPlan)
         viewPager2.currentItem++
@@ -84,7 +84,7 @@ class __FragmentOnBoard : Fragment(),__FragmentWelcomeListener,__FragmentAccount
 
     override fun onRetrieveDietPlan(dietPlan: __UserDietPlan) {
               this.userDietPlan=dietPlan
-              val user=__User3(FirebaseAuth.getInstance().uid,this.userAccountInformation,this.userBiometrics,this.userDietPlan)
+              val user=__User3(FirebaseAuth.getInstance().uid,this.userAccountInformation!!,this.userBiometrics!!,this.userDietPlan!!)
               __UserRepository2.getInstance()?.createUser(user)
     }
 

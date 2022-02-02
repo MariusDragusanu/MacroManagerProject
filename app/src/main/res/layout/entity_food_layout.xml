@@ -30,8 +30,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:background="@drawable/card_shape_2"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@drawable/entity_food_shape">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

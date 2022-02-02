@@ -4,6 +4,7 @@ package com.example.myapplication.Object
 import android.text.TextUtils
 import com.example.macromanager.Entity.__Food
 import com.example.macromanager.Entity.__Meal
+import com.example.macromanager.Object.__FoodCategory
 import com.example.myapplication.Entity.__Date
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
@@ -57,29 +58,29 @@ return (y1+((x-x1)*(y2-y1)/(x2-x1)))
     fun checkEmailFormat(enteredText:String):Boolean{
         return !TextUtils.isEmpty(enteredText) && android.util.Patterns.EMAIL_ADDRESS.matcher(enteredText).matches()
     }
-    fun getTotalProteinGrams(element:__Meal):Double{
-        var result:Double=0.0
+    fun getTotalProteinGrams(element:__Meal):Float{
+        var result=0.0f
 
             for(food in element.getList()) {
-                result += food.nProteins * food.Quantity
+                result += food.nProteins.toFloat() * food.Quantity.toFloat()
             }
             return result
 
     }
-    fun getTotalCarbsGrams(element:__Meal):Double{
-        var result:Double=0.0
+    fun getTotalCarbsGrams(element:__Meal):Float{
+        var result=0.0f
 
         for(food in element.getList()) {
-            result += food.nCarbs * food.Quantity
+            result += food.nCarbs.toFloat() * food.Quantity.toFloat()
         }
         return result
 
     }
-    fun getTotalFatGrams(element:__Meal):Double{
-        var result:Double=0.0
+    fun getTotalFatGrams(element:__Meal):Float{
+        var result=0.0f
 
         for(food in element.getList()) {
-            result += food.nFats * food.Quantity
+            result += food.nFats.toFloat() * food.Quantity.toFloat()
         }
         return result
 
@@ -93,6 +94,66 @@ return (y1+((x-x1)*(y2-y1)/(x2-x1)))
     }
     fun checkInput(layout:TextInputLayout,editText:TextInputEditText){
 
+    }
+    fun isFiberSource(food: __Food):Boolean{
+            return food.nFiber>2
+    }
+    fun isLeanProteinSource(food: __Food):Boolean{
+        var result=false
+        if((((food.nProteins*4f)/food.caloriesIn100UM)>0.45) and ((food.nFats*9f)/food.caloriesIn100UM<0.30f)){
+            result=true
+        }
+        return result
+    }
+    fun isLowDenseCaloric(food: __Food):Boolean{
+        var result=false
+        if((food.caloriesIn100UM/100f)<0.8){
+            result=true
+        }
+        return result
+    }
+    fun isVeganFriendly(food: __Food):Boolean{
+        var result=false
+        if((food.Category==__FoodCategory.Fruits)||(food.Category==__FoodCategory.Grains)||(food.Category==__FoodCategory.Vegetables)||(food.Category==__FoodCategory.Soda)){
+            result=true
+        }
+
+        return result
+    }
+    fun isHighSourceOfProtein(food: __Food):Boolean{
+        return (food.nProteins>15f)
+    }
+    fun isCarbDense(food: __Food):Boolean{
+        var result=false
+        if(((food.nCarbs*4f)/food.caloriesIn100UM)>0.45){
+            result=true
+        }
+        return result
+    }
+    fun isFatDense(food: __Food):Boolean{
+        var result=false
+        if(food.nFats*8.8f/food.caloriesIn100UM>0.35){
+            result=true
+        }
+        return result
+    }
+    fun isDenseCaloric(food:__Food):Boolean{
+        return (food.caloriesIn100UM>400)
+    }
+    fun hasPoorMacros(food:__Food):Boolean{
+        var result=false
+     if(isFatDense(food) and isCarbDense(food)){
+         result=true
+     }
+        return result
+    }
+
+    fun getTotalFiberGrams(currentMeal: __Meal): Float {
+        var result=0f
+        for(food in currentMeal.getList()){
+            result+=(food.nFiber*food.Quantity).toFloat()
+        }
+        return result
     }
 }
 

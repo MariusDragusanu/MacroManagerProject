@@ -33,7 +33,7 @@ import kotlinx.coroutines.Dispatchers
 
 import kotlinx.coroutines.launch
 
-class __FragmentAccountInformation:Fragment(R.layout.fragment_account_information),__FirebaseAccountManagerListener {
+class __FragmentOnBoardAccountInformation:Fragment(R.layout.fragment_account_information),__FirebaseAccountManagerListener {
 private lateinit var listener:__FragmentAccountInformationListener
     override fun onCreateView(
         inflater: LayoutInflater,

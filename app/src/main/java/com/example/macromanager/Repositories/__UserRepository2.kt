@@ -132,13 +132,14 @@ fun updateUser(currentUser:__User3)= CoroutineScope(Dispatchers.IO).launch {
     fun userToHashMap(user: __User3):Map<String,Any> {
         val map = mutableMapOf<String, Any>()
         map[__DatabaseAttributeTag.USER_UID]=user.UID!!
-        map[__DatabaseAttributeTag.USER_ACCOUNT_INFORMATION]=user.userAccountInformation!!
+        map[__DatabaseAttributeTag.USER_ACCOUNT_INFORMATION]=user.userAccountInformation
         map[__DatabaseAttributeTag.USER_MEAL_LIST_ATTRIBUTE] = user.mealCurrentList
         map[__DatabaseAttributeTag.USER_FAV_FOOD_LIST_ATTRIBUTE] = user.foodFavoriteList
         map[__DatabaseAttributeTag.USER_RECENT_FOOD_LIST_ATTRIBUTE] = user.foodRecentList
-        map[__DatabaseAttributeTag.USER_BIOMETRICS_ATTRIBUTE] = user.userBiometrics!!
-        map[__DatabaseAttributeTag.USER_DIET_PLAN_ATTRIBUTE] = user.userDietPlan!!
+        map[__DatabaseAttributeTag.USER_BIOMETRICS_ATTRIBUTE] = user.userBiometrics
+        map[__DatabaseAttributeTag.USER_DIET_PLAN_ATTRIBUTE] = user.userDietPlan
         map[__DatabaseAttributeTag.USER_SAVED_MEAL_ATTRIBUTE]=user.mealSavedList
+        map[__DatabaseAttributeTag.USER_DAY_HISTORY]=user.dayHistory
         return map
     }
 }

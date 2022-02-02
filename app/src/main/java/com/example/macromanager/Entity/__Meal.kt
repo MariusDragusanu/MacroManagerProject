@@ -4,11 +4,10 @@ import android.os.Parcel
 import android.os.Parcelable
 
 
-class __Meal(private var m_Title:String="Default Meal"): Parcelable {  private var m_FoodList:MutableList<__Food>
+class __Meal(private var m_Title:String="Default Meal") {
+    private var m_FoodList:MutableList<__Food>
+     var category:String="Pre Workout Meal"
 
-    constructor(parcel: Parcel) : this(parcel.readString()!!) {
-                    
-    }
 
     init {
         m_FoodList= mutableListOf()
@@ -48,22 +47,5 @@ class __Meal(private var m_Title:String="Default Meal"): Parcelable {  private v
         }
     }
 
-    override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeString(m_Title)
-        parcel.writeArray(this.m_FoodList.toTypedArray())
-    }
 
-    override fun describeContents(): Int {
-        return 0
-    }
-
-    companion object CREATOR : Parcelable.Creator<__Meal> {
-        override fun createFromParcel(parcel: Parcel): __Meal {
-            return __Meal(parcel)
-        }
-
-        override fun newArray(size: Int): Array<__Meal?> {
-            return arrayOfNulls(size)
-        }
-    }
 }

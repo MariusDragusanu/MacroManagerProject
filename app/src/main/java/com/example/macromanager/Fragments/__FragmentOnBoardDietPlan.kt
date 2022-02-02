@@ -19,7 +19,7 @@ import com.example.myapplication.Entity.__UserDietPlan
 import com.example.myapplication.Object.__Utility
 
 
-class __FragmentDietPlan(private val currentUser:__UserBiometrics) : Fragment() {
+class __FragmentOnBoardDietPlan(private val currentUser:__UserBiometrics) : Fragment() {
     private lateinit var listener: __FragmentDietPlanListener
 private lateinit var pbProtein:SeekBar
 private lateinit var pbFat:SeekBar
@@ -71,8 +71,8 @@ private var carbProgress=50f
             tvCarb.text="Carb Percent: ${carbProgress.toInt()}"
         }
         btnHighProtein.setOnClickListener {
-            proteinProgress=30f
-            fatProgress=25f
+            proteinProgress=35f
+            fatProgress=20f
             carbProgress=45f
             pbProtein.setProgress(proteinProgress.toInt(),true)
             pbCarb.setProgress(carbProgress.toInt(),true)

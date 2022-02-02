@@ -14,7 +14,7 @@ import com.example.myapplication.Entity.__UserBiometrics
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 
-class __FragmentUserBiometrics:Fragment(R.layout.fragment_user_biometrics) {
+class __FragmentOnBoardBiometrics:Fragment(R.layout.fragment_user_biometrics) {
 private lateinit var listener:__FragmentUserBiometricsListener
     override fun onCreateView(
         inflater: LayoutInflater,

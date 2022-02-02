@@ -1,6 +1,7 @@
 package com.example.macromanager.Fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.INVISIBLE
@@ -18,8 +19,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.macromanager.Adapters.__FoodAdapterForLibrary
 import com.example.macromanager.Entity.__Food
 import com.example.macromanager.Entity.__User3
+import com.example.macromanager.Listeners.FragmentListener.__FragmentFoodDesignerListener
+import com.example.macromanager.Listeners.FragmentListener.__FragmentFoodInfoListener
 import com.example.macromanager.Listeners.__AdapterFoodListener
 import com.example.macromanager.Listeners.FragmentListener.__FragmentFoodLibraryListener
+import com.example.macromanager.Listeners.FragmentListener.__HomeLibraryComm
 import com.example.macromanager.R
 import com.example.macromanager.ViewModel.__UserViewModel
 import com.example.macromanager.ViewModelFactory.__UserViewModelFactory
@@ -32,7 +36,9 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class __FragmentFoodLibrary(val currentUser:__User3):Fragment(R.layout.fragment_main_food_library),__FoodRepositoryListener,__AdapterFoodListener {
+class __FragmentMainLibrary(val currentUser:__User3):Fragment(R.layout.fragment_main_food_library),__FoodRepositoryListener,__AdapterFoodListener,__FragmentFoodInfoListener,__FragmentFoodDesignerListener,__HomeLibraryComm {
+    private var currentDayIndex:Int=currentUser.dayHistory.size-1
+    private var mealList: MutableList<String> = currentUser.retrieveDay(currentDayIndex).createMealNameList()
     private lateinit var listener: __FragmentFoodLibraryListener
     private lateinit var ilSearch:TextInputLayout
     private lateinit var etSearch:TextInputEditText
@@ -66,7 +72,7 @@ class __FragmentFoodLibrary(val currentUser:__User3):Fragment(R.layout.fragment_
         fabFood=view.findViewById(R.id.frg_library_fabFood)
         fabMeal=view.findViewById(R.id.frg_library_fabMeal)
         viewModel = ViewModelProvider(
-            this@__FragmentFoodLibrary,
+            this@__FragmentMainLibrary,
             __UserViewModelFactory(currentUser)
         )[__UserViewModel::class.java]
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
@@ -171,15 +177,58 @@ onAddButtonClicked()
     }
 
     override fun getFoodQuery(query: MutableList<__Food>) {
-        adapter.setListToBeDiplayed(query)
+        adapter.setListToBeDisplayed(query)
     }
 
     fun setListener(newListener: __FragmentFoodLibraryListener) {
         this.listener=newListener
 
     }
-
+//TODO(de gandit la o varianta astfel incat foodLibrary sa stie ce zii este selectata)
     override fun onFoodItemClicked(currentFood: __Food) {
-        listener.attachFragmentFoodInfo(currentFood,currentUser.getMealListTitle())
+        listener.attachFragmentFoodInfo(currentFood,currentDayIndex,mealList)
+    }
+
+    override fun attachFragmentFoodDesigner() {
+        listener.attachFragmentFoodDesigner()
+    }
+
+    override fun detachFragmentFoodDesigner(fragment: __FragmentFoodDesigner) {
+       listener.detachFragmentFoodDesigner(fragment)
+    }
+
+    override fun detachFragmentFoodInfo(fragment: __FragmentFoodInfo) {
+       listener.detachFragmentFoodInfo(fragment)
+    }
+
+    override fun onFoodAdded(food: __Food, dayIndex: Int,mealName: String) {
+        listener.onFoodAddedToMeal(food,mealName,dayIndex)
+    }
+
+    override fun getDaySelectedInfo(dayIndex: Int, mealNameList: MutableList<String>) {
+        //Log.d("Test","Day Index:$dayIndex")
+       // Log.d("Test","Meal List")
+        for(name in mealNameList){
+         //   Log.d("Test",name)
+        }
+        this.currentDayIndex=dayIndex
+        this.mealList=mealNameList
+    }
+
+    override fun onAddMeal(dayIndex: Int, mealName: String) {
+
+        if(this.currentDayIndex==dayIndex){
+            mealList.add(mealName)
+        }
+     //   Log.d("Test","Day Index:$dayIndex")
+      //  Log.d("Test","Meal List")
+        for(name in mealList){
+           // Log.d("Test",name)
+        }
+
+    }
+
+    fun updateUser(user3: __User3) {
+        viewModel.setProperty(user3)
     }
 }

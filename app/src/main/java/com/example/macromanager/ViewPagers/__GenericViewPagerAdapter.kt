@@ -5,7 +5,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 
-class __GenericViewPagerAdapter(private val fragmentList:MutableList<Fragment>,
+class __GenericViewPagerAdapter( val fragmentList:MutableList<Fragment>,
                                 fragmentManager: FragmentManager,
                                 lifecycle: Lifecycle):FragmentStateAdapter(fragmentManager,lifecycle) {
 
@@ -17,6 +17,7 @@ class __GenericViewPagerAdapter(private val fragmentList:MutableList<Fragment>,
         return fragmentList[position]
     }
     fun setSecondaryFragment(newFragment: Fragment){
+
         fragmentList.add(newFragment)
         notifyItemInserted(fragmentList.size-1)
     }

@@ -36,7 +36,7 @@
     </fragment>
     <fragment
         android:id="@+id/__FragmentFoodLibrary"
-        android:name="com.example.macromanager.Fragments.__FragmentFoodLibrary"
+        android:name="com.example.macromanager.Fragments.__FragmentMainLibrary"
         android:label="__FragmentFoodLibrary" />
     <fragment
         android:id="@+id/__FragmentFoodInfo"

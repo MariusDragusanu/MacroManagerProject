@@ -1,5 +1,6 @@
 package com.example.macromanager.Adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -42,12 +43,21 @@ abstract class __GenericAdapter<T>  constructor( var m_List:MutableList<T>,priva
         m_List.clear()
     }
 
-    fun setListToBeDiplayed(newList: List<T> = mutableListOf()) {
+    fun setListToBeDisplayed(newList: MutableList<T> ) {
         clearList()
-        m_List=newList.toMutableList()
+         Log.d("Test","before newList ItemCount: ${newList.size}")
+        m_List=newList
+        Log.d("Test","after newList ItemCount: ${newList.size}")
+        notifyItemRangeInserted(0,newList.size)
     }
     fun removeElement(where:Int){
         m_List.removeAt(where)
         notifyItemRemoved(where)
+    }
+
+    fun addItem(item: T) {
+        m_List.add(item)
+        //notifyItemInserted(m_List.size-1)
+
     }
 }

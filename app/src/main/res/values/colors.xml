@@ -12,5 +12,8 @@
     <color name="progress1">#00838F</color>
     <color name="progress2">#0B4321</color>
     <color name="progress3">#00695C</color>
+    <color name="colorMainMeal">#54009688</color>
+    <color name="colorSnack">#544CAF50</color>
+    <color name="colorWorkout">#54332055</color>
 
 </resources>

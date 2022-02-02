@@ -11,7 +11,8 @@ object __DatabaseAttributeTag {
     const val USER_RECENT_FOOD_LIST_ATTRIBUTE="foodRecentList"
     const val USER_BIOMETRICS_ATTRIBUTE="userBiometrics"
     const val USER_DIET_PLAN_ATTRIBUTE="userDietPlan"
-   const val USER_SAVED_MEAL_ATTRIBUTE="mealSavedList"
+    const val USER_SAVED_MEAL_ATTRIBUTE="mealSavedList"
+   const val USER_DAY_HISTORY="dayHistory"
     const val FOOD_COLLECTION_NAME="Food Database"
 
     const val FOOD_NAME_ATTRIBUTE="name"
